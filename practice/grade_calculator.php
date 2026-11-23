@@ -17,10 +17,18 @@ $students = [
     ["name" => "伊藤健太", "score" => 58],
 ];
     $totalScore = 0;
+    $passCount = 0;
+    $failCount = 0;
     foreach ($students as $student) {
     $name = $student["name"];
     $score = $student["score"];
     $totalScore += $score;
+    if ($score >= 60) {
+    $passCount++;   // 1増やす
+    } 
+    else {
+    $failCount++;
+    }
     if ($score >= 90) {
         $grade = "A";
         echo $name . "さんは" . $score . "点で" . $grade . "評価で優秀です！<br>";
@@ -36,10 +44,13 @@ $students = [
     } else {
         $grade = "F";
         echo $name . "さんは" . $score . "点で" . $grade . "評価で不合格です！<br>";
+        echo "<h2>②合格・不合格の人数</h2>";
+        echo "合格者は" . $passCount . "人です！<br>";
+        echo "不合格者は" . $failCount . "人です！<br>";
     }
-}
+    }
 ?>
-<h2>②全体の平均点</h2>
+<h2>③全体の平均点</h2>
 <?php
     echo "全体の合計点は" . $totalScore . "点です！<br>";
     $averageScore = $totalScore / count($students);
